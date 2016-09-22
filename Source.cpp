@@ -17,6 +17,8 @@ void ex05();
 int doublesInteger(int a);
 int add(int rand1, int rand2);
 int passByReference(int a);
+void arrayPartC(int matrix[], const int nElements);
+void arrayPartD(int matrix[], const int nElements);
 
 int main()
 {
@@ -69,11 +71,12 @@ void ex02()
 	cout << "Enter the shelf life of a box of chocolate: ";
 	cin >> chocolateShelfLife;
 	//prompts user to enter value for outsideTemp
-	cout << endl << "Enter the outside temperature: ";
+	cout << "Enter the outside temperature: ";
 	cin >> outsideTemp;
 	//uses if statements to subtract 4 from the value of chocolateShelfLife if the outsideTemp is greater than 90
 	if (outsideTemp > 90)
 		chocolateShelfLife -= 4;
+	cout << "The shelf life of a box of chocolate is: " << chocolateShelfLife << endl;
 }
 
 //defines void function ex03
@@ -153,7 +156,25 @@ do
 //defines void function ex05
 void ex05()
 {
-
+	//declares and initializes int variables
+	int arraySum = 0, arrayProduct = 1;
+	const int nElements = 5;
+	//declares a two-dimensional array
+	int matrix[nElements];
+	//uses for loop to store user input in the array values
+		for (int i = 0; i < nElements; i++)
+		{
+			cout << "Enter an integer: ";
+			cin >> matrix[i];
+			//calculates the sum and product of the array values
+			arraySum += matrix[i];
+			arrayProduct = arrayProduct * matrix[i];
+		}
+		//outputs sum and product of array values
+		cout << "Sum of integers: " << arraySum << endl << "Product of integers: " << arrayProduct << endl;
+		//calls void functions arrayPartC  and arrayPartD that take array matrix and int nElements
+		arrayPartC(matrix, nElements);
+		arrayPartD(matrix, nElements);
 }
 
 //defines int function doublesInteger
@@ -178,4 +199,37 @@ int passByReference(int a)
 {
 	a = a + 1;
 	return a;
+}
+
+//defines void function arrayPartC that takes the array matrix and its size nElements
+void arrayPartC(int matrix[], const int nElements)
+{
+	//uses for loop to output the values in the array
+	cout << "The array values are: ";
+	for (int i = 0; i < nElements; i++)
+		cout << matrix[i] << ", ";
+	cout << endl;
+}
+
+//defines void function arrayPartD that takes the array matrix and its size nElements
+void arrayPartD(int matrix[], const int nElements)
+{
+	//declares int variables and initializes inArray to 0
+	int userValue, inArray = 0;
+	//reads user input into int variable userValue
+	cout << "Enter a value: ";
+	cin >> userValue;
+	//uses for loop to test whether or not userValue is in the array
+	for (int i = 0; i < nElements; i++)
+	{
+		//if userValue is equal to a value in the array 1 is added to the value of inArray
+		if (userValue = i)
+			inArray += 1;
+	}
+	//if inArray still equals 0 after the loop ends, then userValue is not in the array
+	if (inArray = 0)
+		cout << "The array does not contain that value." << endl;
+	//if inArray does not equal 0, the userValue is in the array
+	else
+		cout << "The array does contain that value." << endl;
 }
